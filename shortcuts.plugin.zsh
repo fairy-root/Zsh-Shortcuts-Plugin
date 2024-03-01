@@ -8,9 +8,9 @@ if [[ ! -f "$SHORTCUTS_FILE" ]]; then
     touch "$SHORTCUTS_FILE"
 fi
 
-# Helper function to display the usage guide
-display_help() {
-  echo "Usage: shortcut [OPTION] [ALIAS] [COMMAND]"
+# Function to display the usage guide
+function display_help() {
+  echo "Usage: shortcuts [OPTION] [ALIAS] [COMMAND]"
   echo "Manage command shortcuts."
   echo "Options:"
   echo "  -h              display this help and exit"
@@ -21,75 +21,52 @@ display_help() {
 }
 
 # Function to add a new shortcut
-add_shortcut() {
+function add_shortcut() {
   if grep -q "^alias $1=" "$SHORTCUTS_FILE"; then
     echo "Shortcut '$1' already exists."
   else
     echo "alias $1='$2'" >> "$SHORTCUTS_FILE"
     echo "Shortcut $1 added."
-    source "$SHORTCUTS_FILE" || echo "Failed to reload shortcuts."
   fi
 }
 
 # Function to remove an existing shortcut
-remove_shortcut() {
+function remove_shortcut() {
   if grep -q "^alias $1=" "$SHORTCUTS_FILE"; then
-    # Handle macOS sed syntax
-    if [[ "$OSTYPE" == "darwin"* ]]; then
-      sed -i '' "/^alias $1=/d" "$SHORTCUTS_FILE"
-    else
-      sed -i "/^alias $1=/d" "$SHORTCUTS_FILE"
-    fi
+    sed -i "/^alias $1=/d" "$SHORTCUTS_FILE"
     echo "Shortcut $1 removed."
-    source "$SHORTCUTS_FILE" || echo "Failed to reload shortcuts."
   else
     echo "Shortcut '$1' does not exist."
   fi
 }
 
 # Function to list all shortcuts
-list_shortcuts() {
+function list_shortcuts() {
   echo "Shortcuts available:"
   grep "^alias " "$SHORTCUTS_FILE"
 }
 
 # Function to edit an existing shortcut
-edit_shortcut() {
+function edit_shortcut() {
   if grep -q "^alias $1=" "$SHORTCUTS_FILE"; then
-    # Handle macOS sed syntax
-    if [[ "$OSTYPE" == "darwin"* ]]; then
-      sed -i '' "/^alias $1=/c\alias $1='$2'" "$SHORTCUTS_FILE"
-    else
-      sed -i "/^alias $1=/c\alias $1='$2'" "$SHORTCUTS_FILE"
-    fi
+    sed -i "/^alias $1=/c\alias $1='$2'" "$SHORTCUTS_FILE"
     echo "Shortcut $1 updated."
-    source "$SHORTCUTS_FILE" || echo "Failed to reload shortcuts."
   else
     echo "Shortcut '$1' does not exist. Use -a to add it."
   fi
 }
 
-# Parse command-line arguments to execute the appropriate function
-case "$1" in
-  -h)
-    display_help
-    ;;
-  -a)
-    shift # Remove the first argument (-a) to pass the rest to add_shortcut
-    add_shortcut "$@"
-    ;;
-  -r)
-    shift # Remove the first argument (-r) to pass the rest to remove_shortcut
-    remove_shortcut "$@"
-    ;;
-  -l)
-    list_shortcuts
-    ;;
-  -e)
-    shift # Remove the first argument (-e) to pass the rest to edit_shortcut
-    edit_shortcut "$@"
-    ;;
-  *)
-    echo "Invalid option. Use -h for help."
-    ;;
-esac
+# Main function to manage shortcuts
+function shortcuts() {
+  case "$1" in
+    -h) display_help ;;
+    -a) shift; add_shortcut "$@"; source "$SHORTCUTS_FILE" ;;
+    -r) shift; remove_shortcut "$@"; source "$SHORTCUTS_FILE" ;;
+    -l) list_shortcuts ;;
+    -e) shift; edit_shortcut "$@"; source "$SHORTCUTS_FILE" ;;
+    *) echo "Invalid option. Use -h for help." ;;
+  esac
+}
+
+# Load existing shortcuts
+source "$SHORTCUTS_FILE"
