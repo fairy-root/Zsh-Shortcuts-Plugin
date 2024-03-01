@@ -1,21 +1,22 @@
 # Shortcuts Plugin for Oh My Zsh
 
-The Shortcuts plugin for Oh My Zsh allows you to easily manage and use command shortcuts directly from your terminal.
+The Shortcuts plugin for Oh My Zsh is a powerful tool that enables you to easily manage and utilize command shortcuts directly from your terminal, enhancing productivity and streamlining your workflow.
 
 ## Features
 
-- **Add Shortcuts**: Quickly add new command shortcuts.
-- **Remove Shortcuts**: Easily remove existing shortcuts.
-- **List Shortcuts**: View all configured shortcuts at a glance.
-- **Edit Shortcuts**: Update the command for any existing shortcut.
+- **Add Shortcuts**: Quickly add new command shortcuts with ease.
+- **Remove Shortcuts**: Easily remove any existing shortcuts.
+- **List Shortcuts**: Conveniently view all your configured shortcuts at a glance.
+- **Edit Shortcuts**: Update the command for any existing shortcut effortlessly.
+- **Backup and Restore**: Securely backup your shortcuts and restore them when needed.
+- **Grouping**: Organize your shortcuts into groups for better management.
+- **Profiles**: Switch between different profiles to use a specific set of shortcuts tailored to your current task.
 
 ## Prerequisites
 
-Before installing the Shortcuts plugin, you must have Oh My Zsh installed on your system. Oh My Zsh is an open-source, community-driven framework for managing your Zsh configuration. It comes bundled with thousands of helpful functions, helpers, plugins, themes, and a few things that make you shout...
+Before you can install the Shortcuts plugin, you must have Oh My Zsh installed on your system. Oh My Zsh is an open-source, community-driven framework for managing your Zsh configuration, offering thousands of helpful functions, helpers, plugins, themes, and more.
 
-"Oh My ZSH!"
-
-For installation instructions, visit the Oh My Zsh GitHub repository:
+For installation instructions, please visit the Oh My Zsh GitHub repository:
 
 [Oh My Zsh GitHub](https://github.com/ohmyzsh/ohmyzsh)
 
@@ -49,10 +50,14 @@ For installation instructions, visit the Oh My Zsh GitHub repository:
 - **Remove a Shortcut**: `shortcuts -r <alias>`
 - **List Shortcuts**: `shortcuts -l`
 - **Edit a Shortcut**: `shortcuts -e <alias> <new command>`
+- **Backup Shortcuts**: `shortcuts -b`
+- **Restore Shortcuts**: `shortcuts -s`
+- **List Group Shortcuts**: `shortcuts -g <group>`
+- **Switch Profile**: `shortcuts -p <profile>`
 
-The plugin supports **auto sourcing** for the shortcuts added, removed, or edited in the active session. To apply sourcing for other active sessions, you'll need to source your `.zshrc` or restart the session/terminal window.
+Auto sourcing is supported for shortcuts added, removed, or edited within the active session. To apply changes to other active sessions, source your `.zshrc` or restart the terminal.
 
-For detailed usage and options, run `shortcuts -h`.
+For detailed usage and more options, run `shortcuts -h`.
 
 ## Donation
 - USDt (TRC20): `TGCVbSSJbwL5nyXqMuKY839LJ5q5ygn2uS`
@@ -62,7 +67,7 @@ For detailed usage and options, run `shortcuts -h`.
 
 ## Contributing
 
-Contributions are welcome! Feel free to open an issue or submit a pull request.
+Your contributions are always welcome! Feel free to open an issue or submit a pull request.
 
 ## License
 
