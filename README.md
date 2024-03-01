@@ -11,7 +11,13 @@ The Shortcuts plugin for Oh My Zsh is a powerful tool that enables you to easily
 - **Backup and Restore**: Securely backup your shortcuts and restore them when needed.
 - **Grouping**: Organize your shortcuts into groups for better management.
 - **Profiles**: Switch between different profiles to use a specific set of shortcuts tailored to your current task.
-- **Auto Completion**: by pressing **TAB** the auto completes feature will suggest completion of the commands
+- **Auto Completion**: Enhance command entry with suggestions by pressing **TAB**.
+- **Undo Last Change**: Revert the most recent modification made to your shortcuts.
+- **Search Shortcuts**: Find shortcuts quickly by searching for specific terms.
+- **Toggle Shortcut Activation/Deactivation**: Temporarily disable or enable shortcuts without removing them.
+- **Import/Export Shortcuts**: Easily move your shortcuts between different environments or backup them externally.
+- **Logging**: Keep a track of all modifications made to your shortcuts for auditing or troubleshooting.
+- **Enhanced Profile Management**: List all profiles, and delete specific profiles as needed.
 
 ## Prerequisites
 
@@ -47,6 +53,8 @@ For installation instructions, please visit the Oh My Zsh GitHub repository:
 
 ## Usage
 
+To utilize the full range of functionalities offered by the Shortcuts plugin, refer to the following commands:
+
 - **Add a Shortcut**: `shortcuts -a <alias> <command>`
 - **Remove a Shortcut**: `shortcuts -r <alias>`
 - **List Shortcuts**: `shortcuts -l`
@@ -55,12 +63,20 @@ For installation instructions, please visit the Oh My Zsh GitHub repository:
 - **Restore Shortcuts**: `shortcuts -s`
 - **List Group Shortcuts**: `shortcuts -g <group>`
 - **Switch Profile**: `shortcuts -p <profile>`
-
-Auto sourcing is supported for shortcuts added, removed, or edited within the active session. To apply changes to other active sessions, source your `.zshrc` or restart the terminal.
+- **Undo Last Change**: `shortcuts -u`
+- **Search for Shortcuts**: `shortcuts -f <search>`
+- **Toggle Shortcut Activation/Deactivation**: `shortcuts -t <alias>`
+- **Import Shortcuts**: `shortcuts -i <file>`
+- **Export Shortcuts**: `shortcuts -x <file>`
+- **List Profiles**: `shortcuts -lp`
+- **Delete Profile**: `shortcuts -dp <profile>`
 
 For detailed usage and more options, run `shortcuts -h`.
 
 ## Donation
+
+Your support is appreciated:
+
 - USDt (TRC20): `TGCVbSSJbwL5nyXqMuKY839LJ5q5ygn2uS`
 - BTC: `13GS1ixn2uQAmFQkte6qA5p1MQtMXre6MT`
 - ETH (ERC20): `0xdbc7a7dafbb333773a5866ccf7a74da15ee654cc`
