@@ -50,6 +50,8 @@ For installation instructions, visit the Oh My Zsh GitHub repository:
 - **List Shortcuts**: `shortcuts -l`
 - **Edit a Shortcut**: `shortcuts -e <alias> <new command>`
 
+The plugin supports **auto sourcing** for the shortcuts added, removied, or edited in the active session. To apply sourcing for other active sessions, you'll need to source your `.zshrc` or restart the terminal window.
+
 For detailed usage and options, run `shortcuts -h`.
 
 ## Contributing
