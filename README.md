@@ -35,12 +35,12 @@ The Shortcuts plugin for Oh My Zsh allows you to easily manage and use command s
 
 ## Usage
 
-- **Add a Shortcut**: `shortcut -a <alias> <command>`
-- **Remove a Shortcut**: `shortcut -r <alias>`
-- **List Shortcuts**: `shortcut -l`
-- **Edit a Shortcut**: `shortcut -e <alias> <new command>`
+- **Add a Shortcut**: `shortcuts -a <alias> <command>`
+- **Remove a Shortcut**: `shortcuts -r <alias>`
+- **List Shortcuts**: `shortcuts -l`
+- **Edit a Shortcut**: `shortcuts -e <alias> <new command>`
 
-For detailed usage and options, run `shortcut -h`.
+For detailed usage and options, run `shortcuts -h`.
 
 ## Contributing
 
