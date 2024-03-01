@@ -14,7 +14,7 @@ The Shortcuts plugin for Oh My Zsh allows you to easily manage and use command s
 1. **Clone the Repository**: Clone this repository into the Oh My Zsh custom plugins directory:
 
     ```zsh
-    git clone https://github.com/yourusername/shortcuts ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/shortcuts
+    git clone https://github.com/fairysubsteam/Zsh-Shortcuts-Plugin ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/shortcuts
     ```
 
 2. **Activate the Plugin**: Add `shortcuts` to the list of plugins in your `.zshrc` file:
