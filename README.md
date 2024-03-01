@@ -11,11 +11,7 @@ The Shortcuts plugin for Oh My Zsh is a powerful tool that enables you to easily
 - **Backup and Restore**: Securely backup your shortcuts and restore them when needed.
 - **Grouping**: Organize your shortcuts into groups for better management.
 - **Profiles**: Switch between different profiles to use a specific set of shortcuts tailored to your current task.
-- **Auto Completion**: Leverage auto-completion by pressing **TAB** to suggest command completions.
-- **Undo Operations**: Revert the last operation, adding a safety net for your workflow.
-- **Search Functionality**: Find shortcuts quickly with a simple search query.
-- **Import/Export**: Easily transfer shortcuts between different systems or share with others.
-- **Activate/Deactivate Shortcuts**: Temporarily enable or disable shortcuts without removing them.
+- **Auto Completion**: by pressing **TAB** the auto completes feature will suggest completion of the commands
 
 ## Prerequisites
 
@@ -59,12 +55,6 @@ For installation instructions, please visit the Oh My Zsh GitHub repository:
 - **Restore Shortcuts**: `shortcuts -s`
 - **List Group Shortcuts**: `shortcuts -g <group>`
 - **Switch Profile**: `shortcuts -p <profile>`
-- **Undo Last Operation**: `shortcuts -u`
-- **Search for Shortcuts**: `shortcuts -f <query>`
-- **Import Shortcuts**: `shortcuts -i <file>`
-- **Export Shortcuts**: `shortcuts -x <file>`
-- **Activate Shortcut**: `shortcuts -c <alias>`
-- **Deactivate Shortcut**: `shortcuts -d <alias>`
 
 Auto sourcing is supported for shortcuts added, removed, or edited within the active session. To apply changes to other active sessions, source your `.zshrc` or restart the terminal.
 
