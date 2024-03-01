@@ -20,6 +20,10 @@ The Shortcuts plugin for Oh My Zsh allows you to easily manage and use command s
 2. **Activate the Plugin**: Add `shortcuts` to the list of plugins in your `.zshrc` file:
 
     ```zsh
+    nano ~/.zshrc
+    ```
+
+    ```zsh
     plugins=(... shortcuts)
     ```
 
