@@ -9,6 +9,16 @@ The Shortcuts plugin for Oh My Zsh allows you to easily manage and use command s
 - **List Shortcuts**: View all configured shortcuts at a glance.
 - **Edit Shortcuts**: Update the command for any existing shortcut.
 
+## Prerequisites
+
+Before installing the Shortcuts plugin, you must have Oh My Zsh installed on your system. Oh My Zsh is an open-source, community-driven framework for managing your Zsh configuration. It comes bundled with thousands of helpful functions, helpers, plugins, themes, and a few things that make you shout...
+
+"Oh My ZSH!"
+
+For installation instructions, visit the Oh My Zsh GitHub repository:
+
+[Oh My Zsh GitHub](https://github.com/ohmyzsh/ohmyzsh)
+
 ## Installation
 
 1. **Clone the Repository**: Clone this repository into the Oh My Zsh custom plugins directory:
