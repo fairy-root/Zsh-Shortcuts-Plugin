@@ -11,6 +11,7 @@ The Shortcuts plugin for Oh My Zsh is a powerful tool that enables you to easily
 - **Backup and Restore**: Securely backup your shortcuts and restore them when needed.
 - **Grouping**: Organize your shortcuts into groups for better management.
 - **Profiles**: Switch between different profiles to use a specific set of shortcuts tailored to your current task.
+- **Auto Completion**: by pressing **TAB** the auto completes feature will suggest completion of the commands
 
 ## Prerequisites
 
