@@ -43,11 +43,20 @@ For installation instructions, please visit the Oh My Zsh GitHub repository:
 ## Installation
 
 1. **Clone the Repository**: Clone this repository into the Oh My Zsh custom plugins directory:
-
-    ```zsh
-    git clone https://github.com/fairy-root/Zsh-Shortcuts-Plugin ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/shortcuts
-    ```
-
+   1. **Oh My Zsh**
+      ```zsh
+      git clone https://github.com/fairy-root/Zsh-Shortcuts-Plugin ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/shortcuts
+      ```
+    2. **Zsh**
+       If you're looking to use the Zsh-Shortcuts-Plugin without Oh My Zsh, you would still clone the repository, but you would need to manually source the plugin in your `.zshrc` file or any script file that Zsh reads at startup. Here's how you can do it:Clone the repository into a directory of your choice. If you do not have a specific directory for custom Zsh scripts, you can create one. For example, `~/zsh-custom-plugins`:
+       ```
+       git clone https://github.com/fairy-root/Zsh-Shortcuts-Plugin ~/zsh-custom-plugins/shortcuts
+       ```
+   Once the repository is cloned, you need to source the plugin script from your `.zshrc` file to activate it. Open your `.zshrc` file in a text editor and add the following line:
+   ```
+   source ~/zsh-custom-plugins/shortcuts/shortcuts.plugin.zsh
+   ```
+This line of code assumes that the plugin's main script is named shortcuts.plugin.zsh in the cloned repository. Adjust the path if the script name or path differs.After adding the line to your `.zshrc`, save the file and source it to apply the changes immediately without restarting your terminal:source `~/.zshrc`
 2. **Activate the Plugin**: Add `shortcuts` to the list of plugins in your `.zshrc` file:
 
     ```zsh
@@ -58,7 +67,7 @@ For installation instructions, please visit the Oh My Zsh GitHub repository:
     plugins=(... shortcuts)
     ```
 
-3. **Apply the Changes**: Source your `.zshrc` file or restart your terminal session:
+4. **Apply the Changes**: Source your `.zshrc` file or restart your terminal session:
 
     ```zsh
     source ~/.zshrc
