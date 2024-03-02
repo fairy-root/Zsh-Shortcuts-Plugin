@@ -38,11 +38,6 @@ For installation instructions, please visit the Oh My Zsh GitHub repository:
 
 [Oh My Zsh GitHub](https://github.com/ohmyzsh/ohmyzsh)
 
-**Termux Installation**
-```
-sh -c "$(curl -fsSL https://github.com/Cabbagec/termux-ohmyzsh/raw/master/install.sh)"
-```
-
 ---
 
 ## Installation
@@ -102,16 +97,18 @@ The `shortcuts.plugin.zsh` plugin is designed to be broadly compatible with envi
 
 #### Termux (Android)
 - **Compatible:** Yes, with Zsh and Oh My Zsh installation.
-- **Dependencies:** `git`, `zsh`, Oh My Zsh.
+- **Dependencies:** `git`, `zsh`, `Oh My Zsh`.
 - **Installation Steps:**
-  1. Install Zsh: `pkg install zsh`
-  2. Install git: `pkg install git`
-  3. Install Oh My Zsh: `sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"`
-  4. Follow the [Installation](#installation) steps for the plugin.
+  1. Install Zsh: ```pkg install zsh```
+  2. Install git: ```pkg install git```
+  3. Install Oh My Zsh: ```sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"```
+     or
+     ```sh -c "$(curl -fsSL https://github.com/Cabbagec/termux-ohmyzsh/raw/master/install.sh)"```
+  5. Follow the [Installation](#installation) steps for the plugin.
 
 #### Linux/Ubuntu
 - **Compatible:** Yes.
-- **Dependencies:** `git`, `zsh`, Oh My Zsh.
+- **Dependencies:** `git`, `zsh`, `Oh My Zsh`.
 - **Installation Steps:**
   1. Install Zsh: `sudo apt-get install zsh`
   2. Install git: `sudo apt-get install git`
@@ -120,7 +117,7 @@ The `shortcuts.plugin.zsh` plugin is designed to be broadly compatible with envi
 
 #### macOS
 - **Compatible:** Yes.
-- **Dependencies:** `git`, `zsh`, Oh My Zsh.
+- **Dependencies:** `git`, `zsh`, `Oh My Zsh`.
 - **Installation Steps:**
   1. Install Zsh: Zsh is pre-installed on macOS, but you can install the latest version using Homebrew: `brew install zsh`
   2. Install git: Git is pre-installed on macOS, but you can install the latest version using Homebrew: `brew install git`
@@ -129,7 +126,7 @@ The `shortcuts.plugin.zsh` plugin is designed to be broadly compatible with envi
 
 #### Windows (with WSL)
 - **Compatible:** Yes, within WSL.
-- **Dependencies:** Windows Subsystem for Linux (WSL), `git`, `zsh`, Oh My Zsh.
+- **Dependencies:** Windows Subsystem for Linux (WSL), `git`, `zsh`, `Oh My Zsh`.
 - **Installation Steps:**
   1. Enable WSL on Windows and install a Linux distribution from the Microsoft Store (e.g., Ubuntu).
   2. Launch your Linux distribution and update packages: `sudo apt update && sudo apt upgrade`
