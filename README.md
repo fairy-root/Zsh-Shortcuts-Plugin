@@ -91,11 +91,11 @@ For detailed usage and more options, run `shortcuts -h`.
 
 ---
 
-### Compatibility 
+## Compatibility 
 
 The `shortcuts.plugin.zsh` plugin is designed to be broadly compatible with environments that support Zsh and Oh My Zsh. Here’s a compatibility overview and the necessary dependencies for various systems:
 
-#### Termux (Android)
+### Termux (Android)
 - **Compatible:** Yes, with Zsh and Oh My Zsh installation.
 - **Dependencies:** `git`, `zsh`, `Oh My Zsh`.
 - **Installation Steps:**
@@ -117,7 +117,7 @@ The `shortcuts.plugin.zsh` plugin is designed to be broadly compatible with envi
      ```
   4. Follow the [Installation](#installation) steps for the plugin.
 
-#### Linux/Ubuntu
+### Linux/Ubuntu
 - **Compatible:** Yes.
 - **Dependencies:** `git`, `zsh`, `Oh My Zsh`.
 - **Installation Steps:**
@@ -135,7 +135,7 @@ The `shortcuts.plugin.zsh` plugin is designed to be broadly compatible with envi
      ```
   4. Follow the [Installation](#installation) steps for the plugin.
 
-#### macOS
+### macOS
 - **Compatible:** Yes.
 - **Dependencies:** `git`, `zsh`, `Oh My Zsh`.
 - **Installation Steps:**
@@ -153,7 +153,7 @@ The `shortcuts.plugin.zsh` plugin is designed to be broadly compatible with envi
      ```
   4. Follow the [Installation](#installation) steps for the plugin.
 
-#### Windows (with WSL)
+### Windows (with WSL)
 - **Compatible:** Yes, within WSL.
 - **Dependencies:** Windows Subsystem for Linux (WSL), `git`, `zsh`, `Oh My Zsh`.
 - **Installation Steps:**
