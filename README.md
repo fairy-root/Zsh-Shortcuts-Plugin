@@ -1,3 +1,5 @@
+![oh my zsh](https://i.imgur.com/XQruyEK.jpeg "oh my zsh")
+
 # Shortcuts Plugin for Oh My Zsh
 
 The Shortcuts plugin for Oh My Zsh is a powerful tool that enables you to easily manage and utilize command shortcuts directly from your terminal, enhancing productivity and streamlining your workflow.
