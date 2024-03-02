@@ -142,10 +142,10 @@ function edit_shortcut() {
     fi
 }
 
-# List all shortcuts with pagination
+# List all shortcuts without pagination
 function list_shortcuts() {
     echo "Shortcuts available:"
-    grep "^alias " "$SHORTCUTS_FILE" | less
+    grep "^alias " "$SHORTCUTS_FILE"
 }
 
 # Search for shortcuts
