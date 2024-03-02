@@ -115,7 +115,14 @@ function add_shortcut() {
 function remove_shortcut() {
     pre_change_backup
     if grep -q "^alias $1=" "$SHORTCUTS_FILE"; then
-        sed -i "" "/^alias $1=/d" "$SHORTCUTS_FILE"
+        # Detect the operating system
+        if [[ "$OSTYPE" == "darwin"* ]]; then
+            # macOS requires an empty string as an argument to -i
+            sed -i "" "/^alias $1=/d" "$SHORTCUTS_FILE"
+        else
+            # Linux and other UNIX-like systems do not require the empty string
+            sed -i "/^alias $1=/d" "$SHORTCUTS_FILE"
+        fi
         echo "Shortcut $1 removed."
         log_action "Shortcut $1 removed."
     else
