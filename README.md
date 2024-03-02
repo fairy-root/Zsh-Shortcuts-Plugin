@@ -34,9 +34,14 @@ Before you can install the Shortcuts plugin, you must have Oh My Zsh installed o
 
 For installation instructions, please visit the Oh My Zsh GitHub repository:
 
+**Termux Installation**
 ```
 sh -c "$(curl -fsSL https://github.com/Cabbagec/termux-ohmyzsh/raw/master/install.sh)"
 ```
+
+**More Information and other installations**
+
+[Oh My Zsh GitHub](https://github.com/ohmyzsh/ohmyzsh)
 
 ---
 
