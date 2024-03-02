@@ -94,6 +94,57 @@ For detailed usage and more options, run `shortcuts -h`.
 
 ---
 
+### Compatibility
+
+The `shortcuts.plugin.zsh` plugin is designed to be broadly compatible with environments that support Zsh and Oh My Zsh. Here’s a compatibility overview and the necessary dependencies for various systems:
+
+#### Termux (Android)
+- **Compatible:** Yes, with Zsh and Oh My Zsh installation.
+- **Dependencies:** `git`, `zsh`, Oh My Zsh.
+- **Installation Steps:**
+  1. Install Zsh: `pkg install zsh`
+  2. Install git: `pkg install git`
+  3. Install Oh My Zsh: `sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"`
+  4. Follow the [Installation](#installation) steps for the plugin.
+
+#### Linux/Ubuntu
+- **Compatible:** Yes.
+- **Dependencies:** `git`, `zsh`, Oh My Zsh.
+- **Installation Steps:**
+  1. Install Zsh: `sudo apt-get install zsh`
+  2. Install git: `sudo apt-get install git`
+  3. Install Oh My Zsh: `sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"`
+  4. Follow the [Installation](#installation) steps for the plugin.
+
+#### macOS
+- **Compatible:** Yes.
+- **Dependencies:** `git`, `zsh`, Oh My Zsh.
+- **Installation Steps:**
+  1. Install Zsh: Zsh is pre-installed on macOS, but you can install the latest version using Homebrew: `brew install zsh`
+  2. Install git: Git is pre-installed on macOS, but you can install the latest version using Homebrew: `brew install git`
+  3. Install Oh My Zsh: `sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"`
+  4. Follow the [Installation](#installation) steps for the plugin.
+
+#### Windows (with WSL)
+- **Compatible:** Yes, within WSL.
+- **Dependencies:** Windows Subsystem for Linux (WSL), `git`, `zsh`, Oh My Zsh.
+- **Installation Steps:**
+  1. Enable WSL on Windows and install a Linux distribution from the Microsoft Store (e.g., Ubuntu).
+  2. Launch your Linux distribution and update packages: `sudo apt update && sudo apt upgrade`
+  3. Install Zsh: `sudo apt-get install zsh`
+  4. Install git: `sudo apt-get install git`
+  5. Install Oh My Zsh: `sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"`
+  6. Follow the [Installation](#installation) steps for the plugin.
+
+#### Note for Windows Users (without WSL)
+Running this script directly on Windows without WSL is not supported. Consider using WSL for a compatible environment or other solutions like Cygwin, with the understanding that additional adjustments may be necessary.
+
+### Testing and Adjustments
+- Test the plugin in your specific environment, especially if you are using Termux or a non-standard installation.
+- Adjust file paths and commands as needed to ensure compatibility with your system.
+
+---
+
 ## Donation
 
 Your support is appreciated:
