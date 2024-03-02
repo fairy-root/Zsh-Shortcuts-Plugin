@@ -32,6 +32,8 @@ The Shortcuts plugin for Oh My Zsh is a powerful tool that enables you to easily
 
 Before you can install the Shortcuts plugin, you must have Oh My Zsh installed on your system. Oh My Zsh is an open-source, community-driven framework for managing your Zsh configuration, offering thousands of helpful functions, helpers, plugins, themes, and more.
 
+**check the [Compatibility](#Compatibility) before installing.**
+
 For installation instructions, please visit the Oh My Zsh GitHub repository:
 
 [Oh My Zsh GitHub](https://github.com/ohmyzsh/ohmyzsh)
@@ -94,7 +96,7 @@ For detailed usage and more options, run `shortcuts -h`.
 
 ---
 
-### Compatibility
+### Compatibility 
 
 The `shortcuts.plugin.zsh` plugin is designed to be broadly compatible with environments that support Zsh and Oh My Zsh. Here’s a compatibility overview and the necessary dependencies for various systems:
 
