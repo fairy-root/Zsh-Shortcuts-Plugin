@@ -48,6 +48,7 @@ Options:
   -x <file>         Export shortcuts to a file
   -lp               List all profiles
   -dp <profile>     Delete a specific profile
+  -source           Source the shortcuts file
 
 Examples:
   shortcuts -a g:ls 'ls -la'       Add a new shortcut 'ls' in group 'g'
@@ -65,6 +66,7 @@ Examples:
   shortcuts -x /path/to/file       Export shortcuts to a file
   shortcuts -lp                    List all profiles
   shortcuts -dp work               Delete 'work' profile
+  shortcuts -source                Source the shortcuts file
 EOF
 }
 
@@ -129,7 +131,6 @@ function remove_shortcut() {
         fi
         echo "Shortcut $1 removed."
         log_action "Shortcut $1 removed."
-        # Check if alias exists in the current shell session and remove it
         echo "Attempting to unalias $1..."
         alias $1 &>/dev/null && unalias $1 && echo "Unaliased $1 successfully."
         source_shortcuts_file
@@ -240,7 +241,7 @@ function pre_change_backup() {
 # Autocompletion setup
 function _shortcuts_autocomplete() {
     local cur=${COMP_WORDS[COMP_CWORD]}
-    local actions="-h -a -r -l -e -b -s -g -p -u -f -t -i -x -lp -dp"
+    local actions="-h -a -r -l -e -b -s -g -p -u -f -t -i -x -lp -dp -source"
     case "$cur" in
         -r|-e|-t)
             local aliases=$(grep "^alias " "$SHORTCUTS_FILE" | cut -d' ' -f2 | cut -d'=' -f1)
@@ -296,6 +297,7 @@ function shortcuts() {
         -x) shift; export_shortcuts "$@" ;;
         -lp) list_profiles ;;
         -dp) shift; delete_profile "$@" ;;
+        -source) source_shortcuts_file ;; # Added command to source the shortcuts file
         *) echo "Invalid option. Use -h for help." ;;
     esac
 }
