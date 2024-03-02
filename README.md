@@ -32,7 +32,7 @@ The Shortcuts plugin for Oh My Zsh is a powerful tool that enables you to easily
 
 Before you can install the Shortcuts plugin, you must have Oh My Zsh installed on your system. Oh My Zsh is an open-source, community-driven framework for managing your Zsh configuration, offering thousands of helpful functions, helpers, plugins, themes, and more.
 
-**check the [Compatibility](#Compatibility) before installing.**
+**check the [Compatibility](#Compatibility) and Dependencies before installing.**
 
 For installation instructions, please visit the Oh My Zsh GitHub repository:
 
