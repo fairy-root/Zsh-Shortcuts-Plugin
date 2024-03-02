@@ -43,7 +43,7 @@ For installation instructions, please visit the Oh My Zsh GitHub repository:
 ## Installation
 
 1. **Clone the Repository**: Clone this repository into the Oh My Zsh custom plugins directory:
-   1. **Oh My Zsh**
+    1. **Oh My Zsh**
       ```zsh
       git clone https://github.com/fairy-root/Zsh-Shortcuts-Plugin ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/shortcuts
       ```
@@ -52,11 +52,11 @@ For installation instructions, please visit the Oh My Zsh GitHub repository:
        ```
        git clone https://github.com/fairy-root/Zsh-Shortcuts-Plugin ~/zsh-custom-plugins/shortcuts
        ```
-   Once the repository is cloned, you need to source the plugin script from your `.zshrc` file to activate it. Open your `.zshrc` file in a text editor and add the following line:
-   ```
-   source ~/zsh-custom-plugins/shortcuts/shortcuts.plugin.zsh
-   ```
-This line of code assumes that the plugin's main script is named shortcuts.plugin.zsh in the cloned repository. Adjust the path if the script name or path differs.After adding the line to your `.zshrc`, save the file and source it to apply the changes immediately without restarting your terminal:source `~/.zshrc`
+       Once the repository is cloned, you need to source the plugin script from your `.zshrc` file to activate it. Open your `.zshrc` file in a text editor and add the following line:
+        ```
+       source ~/zsh-custom-plugins/shortcuts/shortcuts.plugin.zsh
+        ```
+        This line of code assumes that the plugin's main script is named shortcuts.plugin.zsh in the cloned repository. Adjust the path if the script name or path differs.After adding the line to your `.zshrc`, save the file and source it to apply the changes immediately without restarting your terminal:source `~/.zshrc`
 2. **Activate the Plugin**: Add `shortcuts` to the list of plugins in your `.zshrc` file:
 
     ```zsh
