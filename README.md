@@ -111,7 +111,7 @@ The `shortcuts.plugin.zsh` plugin is designed to be broadly compatible with envi
      ```
      sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
      ```
-     or
+     or use this command
      ```
      sh -c "$(curl -fsSL https://github.com/Cabbagec/termux-ohmyzsh/raw/master/install.sh)"
      ```
