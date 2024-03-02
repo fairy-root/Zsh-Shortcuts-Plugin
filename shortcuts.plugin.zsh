@@ -241,20 +241,23 @@ function pre_change_backup() {
 # Autocompletion setup
 function _shortcuts_autocomplete() {
     local cur=${COMP_WORDS[COMP_CWORD]}
+    local prev=${COMP_WORDS[COMP_CWORD-1]}
     local actions="-h -a -r -l -e -b -s -g -p -u -f -t -i -x -lp -dp -source"
-    case "$cur" in
+    local aliases=$(grep "^alias " "$SHORTCUTS_FILE" | cut -d' ' -f2 | cut -d'=' -f1)
+    local profiles=$(ls "$PROFILE_DIR" | sed 's/\.zsh$//')
+
+    case "$prev" in
         -r|-e|-t)
-            local aliases=$(grep "^alias " "$SHORTCUTS_FILE" | cut -d' ' -f2 | cut -d'=' -f1)
-            COMPREPLY=($(compgen -W "$aliases" -- "$cur"))
-            ;;
+            COMPREPLY=($(compgen -W "${aliases}" -- "$cur"))
+            return 0;;
         -p|-dp)
-            local profiles=$(ls "$PROFILE_DIR" | sed 's/\.zsh$//')
-            COMPREPLY=($(compgen -W "$profiles" -- "$cur"))
-            ;;
-        *)
-            COMPREPLY=($(compgen -W "$actions" -- "$cur"))
-            ;;
+            COMPREPLY=($(compgen -W "${profiles}" -- "$cur"))
+            return 0;;
     esac
+
+    if [[ ${COMP_CWORD} == 1 ]]; then
+        COMPREPLY=($(compgen -W "${actions}" -- "$cur"))
+    fi
 }
 complete -F _shortcuts_autocomplete shortcuts
 
