@@ -129,6 +129,9 @@ function remove_shortcut() {
         fi
         echo "Shortcut $1 removed."
         log_action "Shortcut $1 removed."
+        # Check if alias exists in the current shell session and remove it
+        alias $1 &>/dev/null && unalias $1
+        echo "Alias $1 has been deactivated in the current session."
         source_shortcuts_file
     else
         echo "Shortcut '$1' does not exist."
