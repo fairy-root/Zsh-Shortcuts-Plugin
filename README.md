@@ -2,6 +2,8 @@
 
 The Shortcuts plugin for Oh My Zsh is a powerful tool that enables you to easily manage and utilize command shortcuts directly from your terminal, enhancing productivity and streamlining your workflow.
 
+![Termux](https://imgur.com/a/FtMSCQH "Displaying help")
+
 ## Features
 
 - **Add Shortcuts**: Quickly add new command shortcuts with ease.
