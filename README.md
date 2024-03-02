@@ -6,6 +6,8 @@ The Shortcuts plugin for Oh My Zsh is a powerful tool that enables you to easily
 
 ![Termux](https://i.imgur.com/6tMn91E.jpg "Displaying help")
 
+---
+
 ## Features
 
 - **Add Shortcuts**: Quickly add new command shortcuts with ease.
@@ -24,6 +26,8 @@ The Shortcuts plugin for Oh My Zsh is a powerful tool that enables you to easily
 - **Source Shortcuts File**: (the plugin sources the shortcuts automatically, this command is for sourcing it manually if the automatic sourcing fails.) Easily reload your shortcuts file to apply changes immediately.
 - **Auto Completion**: Enhance command entry with suggestions by pressing **TAB**. adds a behaviour for options that require an alias or profile name as their next argument, such as -r, -e, -t for aliases, and -p, -dp for profiles. For these cases, it dynamically suggests the available aliases or profiles based on the contents of the SHORTCUTS_FILE and the profiles in the $PROFILE_DIR.
 
+---
+
 ## Prerequisites
 
 Before you can install the Shortcuts plugin, you must have Oh My Zsh installed on your system. Oh My Zsh is an open-source, community-driven framework for managing your Zsh configuration, offering thousands of helpful functions, helpers, plugins, themes, and more.
@@ -31,6 +35,8 @@ Before you can install the Shortcuts plugin, you must have Oh My Zsh installed o
 For installation instructions, please visit the Oh My Zsh GitHub repository:
 
 [Oh My Zsh GitHub](https://github.com/ohmyzsh/ohmyzsh)
+
+---
 
 ## Installation
 
@@ -56,6 +62,8 @@ For installation instructions, please visit the Oh My Zsh GitHub repository:
     source ~/.zshrc
     ```
 
+---
+
 ## Usage
 
 To utilize the full range of functionalities offered by the Shortcuts plugin, refer to the following commands:
@@ -78,6 +86,8 @@ To utilize the full range of functionalities offered by the Shortcuts plugin, re
 - **Source the Shortcuts File**: `shortcuts -source`
 
 For detailed usage and more options, run `shortcuts -h`.
+
+---
 
 ## Donation
 
