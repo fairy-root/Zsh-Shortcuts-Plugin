@@ -11,7 +11,6 @@ The Shortcuts plugin for Oh My Zsh is a powerful tool that enables you to easily
 - **Backup and Restore**: Securely backup your shortcuts and restore them when needed.
 - **Grouping**: Organize your shortcuts into groups for better management.
 - **Profiles**: Switch between different profiles to use a specific set of shortcuts tailored to your current task.
-- **Auto Completion**: Enhance command entry with suggestions by pressing **TAB**.
 - **Undo Last Change**: Revert the most recent modification made to your shortcuts.
 - **Search Shortcuts**: Find shortcuts quickly by searching for specific terms.
 - **Toggle Shortcut Activation/Deactivation**: Temporarily disable or enable shortcuts without removing them.
@@ -19,7 +18,7 @@ The Shortcuts plugin for Oh My Zsh is a powerful tool that enables you to easily
 - **Logging**: Keep a track of all modifications made to your shortcuts for auditing or troubleshooting.
 - **Enhanced Profile Management**: List all profiles, and delete specific profiles as needed.
 - **Source Shortcuts File**: (the plugin sources the shortcuts automatically, this command is for sourcing it manually if the automatic sourcing fails.) Easily reload your shortcuts file to apply changes immediately.
-- **Auto Completion**: auto complete behavious for options that require an alias or profile name as their next argument, such as -r, -e, -t for aliases, and -p, -dp for profiles. For these cases, it dynamically suggests the available aliases or profiles based on the contents of the SHORTCUTS_FILE and the profiles in the $PROFILE_DIR.
+- **Auto Completion**: Enhance command entry with suggestions by pressing **TAB**. adds a behaviour for options that require an alias or profile name as their next argument, such as -r, -e, -t for aliases, and -p, -dp for profiles. For these cases, it dynamically suggests the available aliases or profiles based on the contents of the SHORTCUTS_FILE and the profiles in the $PROFILE_DIR.
 
 ## Prerequisites
 
