@@ -19,6 +19,12 @@ log_action() {
     echo "$(date "+%Y-%m-%d %H:%M:%S") - $1" >> "$LOG_FILE"
 }
 
+# Function to source the shortcuts file
+function source_shortcuts_file() {
+    source "$SHORTCUTS_FILE"
+    echo "Shortcuts reloaded successfully."
+}
+
 # Function: Display help
 function display_help() {
     cat << EOF
@@ -78,7 +84,7 @@ function restore_shortcuts() {
     fi
     cp "$BACKUP_DIR/$latest_backup" "$SHORTCUTS_FILE"
     echo "Restored from backup: $latest_backup"
-    source "$SHORTCUTS_FILE"
+    source_shortcuts_file
     log_action "Restored from backup: $latest_backup"
 }
 
@@ -92,7 +98,7 @@ function undo_last_change() {
     if [[ -f "$BACKUP_DIR/$last_backup.zsh" ]]; then
         cp "$BACKUP_DIR/$last_backup.zsh" "$SHORTCUTS_FILE"
         echo "Undo successful: restored $last_backup"
-        source "$SHORTCUTS_FILE"
+        source_shortcuts_file
         log_action "Undo successful: restored $last_backup"
     else
         echo "Undo failed: backup not found."
@@ -109,22 +115,21 @@ function add_shortcut() {
     echo "alias $1='$2'" >> "$SHORTCUTS_FILE"
     echo "Shortcut $1 added."
     log_action "Shortcut $1 added."
+    source_shortcuts_file
 }
 
 # Remove an existing shortcut
 function remove_shortcut() {
     pre_change_backup
     if grep -q "^alias $1=" "$SHORTCUTS_FILE"; then
-        # Detect the operating system
         if [[ "$OSTYPE" == "darwin"* ]]; then
-            # macOS requires an empty string as an argument to -i
             sed -i "" "/^alias $1=/d" "$SHORTCUTS_FILE"
         else
-            # Linux and other UNIX-like systems do not require the empty string
             sed -i "/^alias $1=/d" "$SHORTCUTS_FILE"
         fi
         echo "Shortcut $1 removed."
         log_action "Shortcut $1 removed."
+        source_shortcuts_file
     else
         echo "Shortcut '$1' does not exist."
     fi
@@ -134,15 +139,20 @@ function remove_shortcut() {
 function edit_shortcut() {
     pre_change_backup
     if grep -q "^alias $1=" "$SHORTCUTS_FILE"; then
-        sed -i "" "/^alias $1=/c\alias $1='$2'" "$SHORTCUTS_FILE"
+        if [[ "$OSTYPE" == "darwin"* ]]; then
+            sed -i "" "/^alias $1=/c\alias $1='$2'" "$SHORTCUTS_FILE"
+        else
+            sed -i "/^alias $1=/c\alias $1='$2'" "$SHORTCUTS_FILE"
+        fi
         echo "Shortcut $1 updated."
         log_action "Shortcut $1 updated."
+        source_shortcuts_file
     else
         echo "Shortcut '$1' does not exist. Use -a to add it."
     fi
 }
 
-# List all shortcuts without pagination
+# List all shortcuts
 function list_shortcuts() {
     echo "Shortcuts available:"
     grep "^alias " "$SHORTCUTS_FILE"
@@ -160,13 +170,23 @@ function toggle_shortcut() {
     pre_change_backup
     local alias_name=$1
     if grep -q "^alias $alias_name=" "$SHORTCUTS_FILE"; then
-        sed -i "" "s/^alias $alias_name=/#&/" "$SHORTCUTS_FILE"
+        if [[ "$OSTYPE" == "darwin"* ]]; then
+            sed -i "" "s/^alias $alias_name=/#&/" "$SHORTCUTS_FILE"
+        else
+            sed -i "s/^alias $alias_name=/#&/" "$SHORTCUTS_FILE"
+        fi
         echo "Shortcut $alias_name deactivated."
         log_action "Shortcut $alias_name deactivated."
+        source_shortcuts_file
     elif grep -q "^#alias $alias_name=" "$SHORTCUTS_FILE"; then
-        sed -i "" "s/^#alias $alias_name=/alias $alias_name=/" "$SHORTCUTS_FILE"
+        if [[ "$OSTYPE" == "darwin"* ]]; then
+            sed -i "" "s/^#alias $alias_name=/alias $alias_name=/" "$SHORTCUTS_FILE"
+        else
+            sed -i "s/^#alias $alias_name=/alias $alias_name=/" "$SHORTCUTS_FILE"
+        fi
         echo "Shortcut $alias_name activated."
         log_action "Shortcut $alias_name activated."
+        source_shortcuts_file
     else
         echo "Shortcut '$alias_name' does not exist."
     fi
@@ -180,7 +200,7 @@ function import_shortcuts() {
         cp "$import_file" "$SHORTCUTS_FILE"
         echo "Imported shortcuts from $import_file."
         log_action "Imported shortcuts from $import_file."
-        source "$SHORTCUTS_FILE"
+        source_shortcuts_file
     else
         echo "Import file does not exist."
     fi
@@ -203,7 +223,7 @@ function switch_profile() {
     fi
     cp "$profile_path" "$SHORTCUTS_FILE"
     echo "Switched to profile '$1'."
-    source "$SHORTCUTS_FILE"
+    source_shortcuts_file
     log_action "Switched to profile '$1'."
 }
 
