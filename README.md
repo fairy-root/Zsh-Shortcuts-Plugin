@@ -88,6 +88,8 @@ Your support is appreciated:
 - ETH (ERC20): `0xdbc7a7dafbb333773a5866ccf7a74da15ee654cc`
 - LTC: `Ldb6SDxUMEdYQQfRhSA3zi4dCUtfUdsPou`
 
+---
+
 ![oh my zsh](https://i.imgur.com/XQruyEK.jpeg "oh my zsh")
 
 ## Contributing
