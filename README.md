@@ -18,6 +18,7 @@ The Shortcuts plugin for Oh My Zsh is a powerful tool that enables you to easily
 - **Import/Export Shortcuts**: Easily move your shortcuts between different environments or backup them externally.
 - **Logging**: Keep a track of all modifications made to your shortcuts for auditing or troubleshooting.
 - **Enhanced Profile Management**: List all profiles, and delete specific profiles as needed.
+- **Source Shortcuts File**: Easily reload your shortcuts file to apply changes immediately.
 
 ## Prerequisites
 
@@ -70,6 +71,7 @@ To utilize the full range of functionalities offered by the Shortcuts plugin, re
 - **Export Shortcuts**: `shortcuts -x <file>`
 - **List Profiles**: `shortcuts -lp`
 - **Delete Profile**: `shortcuts -dp <profile>`
+- **Source the Shortcuts File**: `shortcuts -source`
 
 For detailed usage and more options, run `shortcuts -h`.
 
