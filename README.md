@@ -1,4 +1,4 @@
-![oh my zsh](https://i.imgur.com/ONiGPyN.jpeg "oh my zsh")
+![oh my zsh](https://i.imgur.com/9BHHoxG.jpg "oh my zsh")
 
 # <span style="color:blue;">Shortcuts Plugin for Zsh / Oh My Zsh</span>
 
