@@ -42,8 +42,8 @@ For installation instructions, please visit the Oh My Zsh GitHub repository:
 
 ## Installation
 
-1. **Clone the Repository**: Clone this repository into the Oh My Zsh custom plugins directory:
-    1. **Oh My Zsh**
+1. **Choose and Clone the Repository**: you can either choose Oh My Zsh or Zsh, clone the reposito and install it, then follow the steps of activating the plugin.
+    1. **Oh My Zsh**: Clone this repository into the Oh My Zsh custom plugins directory:
       ```zsh
       git clone https://github.com/fairy-root/Zsh-Shortcuts-Plugin ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/shortcuts
       ```
