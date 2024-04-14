@@ -1,10 +1,8 @@
-![oh my zsh](https://i.imgur.com/I2wjmj5.jpeg "oh my zsh")
-
 # <span style="color:blue;">Shortcuts Plugin for Zsh / Oh My Zsh</span>
 
 **The Shortcuts plugin for Oh My Zsh is a powerful tool that enables you to easily manage and utilize command shortcuts directly from your terminal, enhancing productivity and streamlining your workflow.**
 
-![Termux](https://i.imgur.com/6tMn91E.jpg "Displaying help")
+![Termux](https://i.imgur.com/I2wjmj5.jpeg "Displaying help")
 
 ---
 
