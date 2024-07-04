@@ -17,6 +17,8 @@
 - **Link Management**: Add/remove links to import shortcuts
 - **Remove All Shortcuts**
 - **Default Profile**: Automatically created for new users
+- **Update Shortcuts from Links**
+- **Add New Profiles**
 
 ## Installation
 
@@ -57,6 +59,7 @@
 - **Restore**: `shortcuts -s`
 - **Group List**: `shortcuts -g <group>`
 - **Switch Profile**: `shortcuts -p <profile>`
+- **Add New Profile**: `shortcuts -ap <profile>`
 - **Undo**: `shortcuts -u`
 - **Search**: `shortcuts -f <pattern>`
 - **Toggle**: `shortcuts -t <alias>`

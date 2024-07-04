@@ -55,6 +55,7 @@ Options:
   -la <link>        Add a link to import shortcuts from
   -rl <link>        Remove a link
   -ra               Remove all shortcuts
+  -ap <profile>     Add a new profile
 
 Examples:
   shortcuts -a g:ls 'ls -la'       Add a new shortcut 'ls' in group 'g'
@@ -76,6 +77,7 @@ Examples:
   shortcuts -la http://link.com    Add a link to import shortcuts from
   shortcuts -rl http://link.com    Remove a link
   shortcuts -ra                    Remove all shortcuts
+  shortcuts -ap new_profile        Add a new profile
 EOF
 }
 
@@ -202,9 +204,7 @@ function toggle_shortcut() {
         source_shortcuts_file
     else
         echo "Shortcut '$alias_name' does not exist."
-    fi
-}
-
+        
 # Import and Export shortcuts
 function import_shortcuts() {
     pre_change_backup
@@ -240,6 +240,19 @@ function switch_profile() {
     log_action "Switched to profile '$1'."
 }
 
+# Add a new profile
+function add_profile() {
+    local profile=$1
+    local profile_path="$PROFILE_DIR/${profile}.zsh"
+    if [[ -f "$profile_path" ]]; then
+        echo "Profile '$profile' already exists."
+        return 1
+    fi
+    touch "$profile_path"
+    echo "Profile '$profile' created."
+    log_action "Profile '$profile' created."
+}
+
 # Pre-change backup
 function pre_change_backup() {
     local timestamp=$(date "+%Y%m%d%H%M%S")
@@ -251,7 +264,7 @@ function pre_change_backup() {
 function _shortcuts_autocomplete() {
     local cur=${COMP_WORDS[COMP_CWORD]}
     local prev=${COMP_WORDS[COMP_CWORD-1]}
-    local actions="-h -a -r -l -e -b -s -g -p -u -f -t -i -x -lp -dp -source -la -rl -ra"
+    local actions="-h -a -r -l -e -b -s -g -p -u -f -t -i -x -lp -dp -source -la -rl -ra -ap"
     local aliases=$(grep "^alias " "$SHORTCUTS_FILE" | cut -d' ' -f2 | cut -d'=' -f1)
     local profiles=$(ls "$PROFILE_DIR" | sed 's/\.zsh$//')
     local links=$(cat "$LINKS_FILE")
@@ -260,7 +273,7 @@ function _shortcuts_autocomplete() {
         -r|-e|-t)
             COMPREPLY=($(compgen -W "${aliases}" -- "$cur"))
             return 0;;
-        -p|-dp)
+        -p|-dp|-ap)
             COMPREPLY=($(compgen -W "${profiles}" -- "$cur"))
             return 0;;
         -rl)
@@ -366,6 +379,7 @@ function shortcuts() {
         -la) shift; add_link "$@" ;;
         -rl) shift; remove_link "$@" ;;
         -ra) remove_all_shortcuts ;;
+        -ap) shift; add_profile "$@" ;;
         -up) update_shortcuts ;;  # Add the update command here
         *) echo "Invalid option. Use -h for help." ;;
     esac
