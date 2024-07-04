@@ -343,6 +343,13 @@ function remove_all_shortcuts() {
     > "$SHORTCUTS_FILE"
     echo "All shortcuts removed."
     log_action "All shortcuts removed."
+    # Explicitly unalias all current shortcuts to prevent any hanging
+    while IFS= read -r line; do
+        if [[ "$line" == alias* ]]; then
+            local alias_name=$(echo "$line" | cut -d' ' -f2 | cut -d'=' -f1)
+            unalias "$alias_name" 2>/dev/null
+        fi
+    done < "$SHORTCUTS_FILE"
     source_shortcuts_file
 }
 
