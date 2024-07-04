@@ -68,6 +68,7 @@
 - **Add Link**: `shortcuts -la <link>`
 - **Remove Link**: `shortcuts -rl <link>`
 - **Remove All**: `shortcuts -ra`
+- **Update Shortcuts from Links**: `shortcuts -up`
 
 For detailed options, run `shortcuts -h`.
 

@@ -327,6 +327,22 @@ function remove_all_shortcuts() {
     source_shortcuts_file
 }
 
+# Function to update shortcuts from the provided links
+function update_shortcuts() {
+    if [[ ! -s "$LINKS_FILE" ]]; then
+        echo "No links found to update shortcuts."
+        return 1
+    fi
+
+    pre_change_backup
+    while IFS= read -r link; do
+        curl -fsSL "$link" >> "$SHORTCUTS_FILE"
+    done < "$LINKS_FILE"
+    echo "Shortcuts updated from links."
+    log_action "Shortcuts updated from links."
+    source_shortcuts_file
+}
+
 # Main function to manage shortcuts
 function shortcuts() {
     case "$1" in
@@ -350,6 +366,7 @@ function shortcuts() {
         -la) shift; add_link "$@" ;;
         -rl) shift; remove_link "$@" ;;
         -ra) remove_all_shortcuts ;;
+        -up) update_shortcuts ;;  # Add the update command here
         *) echo "Invalid option. Use -h for help." ;;
     esac
 }
