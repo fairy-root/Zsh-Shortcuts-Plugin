@@ -1,213 +1,116 @@
-# <span style="color:blue;">Shortcuts Plugin for Zsh / Oh My Zsh</span>
+# Shortcuts Plugin for Zsh / Oh My Zsh
 
-**The Shortcuts plugin for Oh My Zsh is a powerful tool that enables you to easily manage and utilize command shortcuts directly from your terminal, enhancing productivity and streamlining your workflow.**
+**Enhance your terminal productivity with the Shortcuts plugin for Oh My Zsh. Easily manage command shortcuts with robust features.**
 
 ![Termux](https://i.imgur.com/I2wjmj5.jpeg "Displaying help")
 
----
-
 ## Features
 
-- **Add Shortcuts**: Quickly add new command shortcuts with ease.
-- **Remove Shortcuts**: Easily remove any existing shortcuts.
-- **List Shortcuts**: Conveniently view all your configured shortcuts at a glance.
-- **Edit Shortcuts**: Update the command for any existing shortcut effortlessly.
-- **Backup and Restore**: Securely backup your shortcuts and restore them when needed.
-- **Grouping**: Organize your shortcuts into groups for better management.
-- **Profiles**: Switch between different profiles to use a specific set of shortcuts tailored to your current task.
-- **Undo Last Change**: Revert the most recent modification made to your shortcuts.
-- **Search Shortcuts**: Find shortcuts quickly by searching for specific terms.
-- **Toggle Shortcut Activation/Deactivation**: Temporarily disable or enable shortcuts without removing them.
-- **Import/Export Shortcuts**: Easily move your shortcuts between different environments or backup them externally.
-- **Logging**: Keep a track of all modifications made to your shortcuts for auditing or troubleshooting.
-- **Enhanced Profile Management**: List all profiles, and delete specific profiles as needed.
-- **Source Shortcuts File**: (the plugin sources the shortcuts automatically, this command is for sourcing it manually if the automatic sourcing fails.) Easily reload your shortcuts file to apply changes immediately.
-- **Auto Completion**: Enhance command entry with suggestions by pressing **TAB**. adds a behaviour for options that require an alias or profile name as their next argument, such as -r, -e, -t for aliases, and -p, -dp for profiles. For these cases, it dynamically suggests the available aliases or profiles based on the contents of the SHORTCUTS_FILE and the profiles in the $PROFILE_DIR.
-
----
-
-## Prerequisites
-
-Before you can install the Shortcuts plugin, you must have Oh My Zsh installed on your system. Oh My Zsh is an open-source, community-driven framework for managing your Zsh configuration, offering thousands of helpful functions, helpers, plugins, themes, and more.
-
-**check the [Compatibility](#Compatibility) and Dependencies before installing.**
-
-For installation instructions, please visit the Oh My Zsh GitHub repository:
-
-[Oh My Zsh GitHub](https://github.com/ohmyzsh/ohmyzsh)
-
----
+- **Add, Remove, Edit Shortcuts**
+- **Backup and Restore Shortcuts**
+- **Grouping and Profiles Management**
+- **Undo Last Change**
+- **Search and Toggle Shortcuts**
+- **Import/Export Shortcuts**
+- **Logging Actions**
+- **Auto Completion**
+- **Link Management**: Add/remove links to import shortcuts
+- **Remove All Shortcuts**
+- **Default Profile**: Automatically created for new users
 
 ## Installation
 
-1. **Choose and Clone the Repository**: You can either choose Oh My Zsh or Zsh, clone the reposito and install it, then follow the steps of activating the plugin.
-    1. **Oh My Zsh**: Clone this repository into the Oh My Zsh custom plugins directory:
-      ```zsh
-      git clone https://github.com/fairy-root/Zsh-Shortcuts-Plugin ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/shortcuts
-      ```
-   **after installing Oh My Zsh, go to activating the plugin**
-   
-    2. **Zsh**
-       If you're looking to use the Zsh-Shortcuts-Plugin without Oh My Zsh, you would still clone the repository, but you would need to manually source the plugin in your `.zshrc` file or any script file that Zsh reads at startup. Here's how you can do it:Clone the repository into a directory of your choice. If you do not have a specific directory for custom Zsh scripts, you can create one. For example, `~/zsh-custom-plugins`:
-       ```
-       git clone https://github.com/fairy-root/Zsh-Shortcuts-Plugin ~/zsh-custom-plugins/shortcuts
-       ```
-       Once the repository is cloned, you need to source the plugin script from your `.zshrc` file to activate it. Open your `.zshrc` file in a text editor and add the following line:
-        ```
-       source ~/zsh-custom-plugins/shortcuts/shortcuts.plugin.zsh
-        ```
-        This line of code assumes that the plugin's main script is named shortcuts.plugin.zsh in the cloned repository. Adjust the path if the script name or path differs.After adding the line to your `.zshrc`, save the file and source it to apply the changes immediately without restarting your terminal:source `~/.zshrc`
-3. **Activate the Plugin**: Add `shortcuts` to the list of plugins in your `.zshrc` file:
+### Oh My Zsh
 
-    ```zsh
+1. Clone the repository:
+    ```sh
+    git clone https://github.com/fairy-root/Zsh-Shortcuts-Plugin ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/shortcuts
+    ```
+
+2. Activate the plugin:
+    ```sh
     nano ~/.zshrc
-    ```
-
-    ```zsh
     plugins=(... shortcuts)
-    ```
-
-4. **Apply the Changes**: Source your `.zshrc` file or restart your terminal session:
-
-    ```zsh
     source ~/.zshrc
     ```
 
----
+### Zsh (without Oh My Zsh)
+
+1. Clone the repository:
+    ```sh
+    git clone https://github.com/fairy-root/Zsh-Shortcuts-Plugin ~/zsh-custom-plugins/shortcuts
+    ```
+
+2. Source the plugin in your `.zshrc`:
+    ```sh
+    echo "source ~/zsh-custom-plugins/shortcuts/shortcuts.plugin.zsh" >> ~/.zshrc
+    source ~/.zshrc
+    ```
 
 ## Usage
 
-To utilize the full range of functionalities offered by the Shortcuts plugin, refer to the following commands:
-
-- **Add a Shortcut**: `shortcuts -a <alias> <command>`
-- **Remove a Shortcut**: `shortcuts -r <alias>`
-- **List Shortcuts**: `shortcuts -l`
-- **Edit a Shortcut**: `shortcuts -e <alias> <new command>`
-- **Backup Shortcuts**: `shortcuts -b`
-- **Restore Shortcuts**: `shortcuts -s`
-- **List Group Shortcuts**: `shortcuts -g <group>`
+- **Add**: `shortcuts -a <alias> <command>`
+- **Remove**: `shortcuts -r <alias>`
+- **List**: `shortcuts -l`
+- **Edit**: `shortcuts -e <alias> <new command>`
+- **Backup**: `shortcuts -b`
+- **Restore**: `shortcuts -s`
+- **Group List**: `shortcuts -g <group>`
 - **Switch Profile**: `shortcuts -p <profile>`
-- **Undo Last Change**: `shortcuts -u`
-- **Search for Shortcuts**: `shortcuts -f <search>`
-- **Toggle Shortcut Activation/Deactivation**: `shortcuts -t <alias>`
-- **Import Shortcuts**: `shortcuts -i <file>`
-- **Export Shortcuts**: `shortcuts -x <file>`
+- **Undo**: `shortcuts -u`
+- **Search**: `shortcuts -f <pattern>`
+- **Toggle**: `shortcuts -t <alias>`
+- **Import**: `shortcuts -i <file>`
+- **Export**: `shortcuts -x <file>`
 - **List Profiles**: `shortcuts -lp`
 - **Delete Profile**: `shortcuts -dp <profile>`
-- **Source the Shortcuts File**: `shortcuts -source`
+- **Source File**: `shortcuts -source`
+- **Add Link**: `shortcuts -la <link>`
+- **Remove Link**: `shortcuts -rl <link>`
+- **Remove All**: `shortcuts -ra`
 
-For detailed usage and more options, run `shortcuts -h`.
+For detailed options, run `shortcuts -h`.
 
----
+## Compatibility
 
-## Compatibility 
+- **Termux (Android)**
+  - Install Zsh and Git:
+    ```sh
+    pkg install zsh git
+    ```
 
-The `shortcuts.plugin.zsh` plugin is designed to be broadly compatible with environments that support Zsh and Oh My Zsh. Here’s a compatibility overview and the necessary dependencies for various systems:
+- **Linux/Ubuntu**
+  - Install Zsh and Git:
+    ```sh
+    sudo apt-get install zsh git
+    ```
 
-### Termux (Android)
-- **Compatible:** Yes, with Zsh and Oh My Zsh installation.
-- **Dependencies:** `git`, `zsh`, `Oh My Zsh`.
-- **Installation Steps:**
-  1. Install Zsh:
-     ```
-     pkg install zsh
-     ```
-  2. Install git:
-     ```
-     pkg install git
-     ```
-  3. Install Oh My Zsh:
-     ```
-     sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-     ```
-     or use this command
-     ```
-     sh -c "$(curl -fsSL https://github.com/Cabbagec/termux-ohmyzsh/raw/master/install.sh)"
-     ```
-  4. Follow the [Installation](#installation) steps for the plugin.
+- **macOS**
+  - Install Zsh and Git using Homebrew if necessary:
+    ```sh
+    brew install zsh git
+    ```
 
-### Linux/Ubuntu
-- **Compatible:** Yes.
-- **Dependencies:** `git`, `zsh`, `Oh My Zsh`.
-- **Installation Steps:**
-  1. Install Zsh:
-     ```
-     sudo apt-get install zsh
-     ```
-  2. Install git:
-     ```
-     sudo apt-get install git
-     ```
-  3. Install Oh My Zsh:
-     ```
-     sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-     ```
-  4. Follow the [Installation](#installation) steps for the plugin.
+- **Windows (WSL)**
+  - Enable WSL and install a Linux distribution, then follow Linux/Ubuntu steps.
 
-### macOS
-- **Compatible:** Yes.
-- **Dependencies:** `git`, `zsh`, `Oh My Zsh`.
-- **Installation Steps:**
-  1. Install Zsh: Zsh is pre-installed on macOS, but you can install the latest version using Homebrew:
-     ```
-     brew install zsh`
-     ``
-  2. Install git: Git is pre-installed on macOS, but you can install the latest version using Homebrew:
-     ```
-     brew install git
-     ```
-  3. Install Oh My Zsh:
-     ```
-     sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-     ```
-  4. Follow the [Installation](#installation) steps for the plugin.
+## Contributing
 
-### Windows (with WSL)
-- **Compatible:** Yes, within WSL.
-- **Dependencies:** Windows Subsystem for Linux (WSL), `git`, `zsh`, `Oh My Zsh`.
-- **Installation Steps:**
-  1. Enable WSL on Windows and install a Linux distribution from the Microsoft Store (e.g., Ubuntu).
-  2. Launch your Linux distribution and update packages:
-     ```
-     sudo apt update && sudo apt upgrade
-     ```
-  3. Install Zsh:
-     ```
-     sudo apt-get install zsh
-     ```
-  4. Install git: `sudo apt-get install git`
-  5. Install Oh My Zsh:
-     ```
-     sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-     ```
-  6. Follow the [Installation](#installation) steps for the plugin.
+Contributions are welcome! Open an issue or submit a pull request.
 
-#### Note for Windows Users (without WSL)
-Running this script directly on Windows without WSL is not supported. Consider using WSL for a compatible environment or other solutions like Cygwin, with the understanding that additional adjustments may be necessary.
+## License
 
-### Testing and Adjustments
-- Test the plugin in your specific environment, especially if you are using Termux or a non-standard installation.
-- Adjust file paths and commands as needed to ensure compatibility with your system.
-
----
-
-## Donation
-
-Your support is appreciated:
-
-- USDt (TRC20): `TGCVbSSJbwL5nyXqMuKY839LJ5q5ygn2uS`
-- BTC: `13GS1ixn2uQAmFQkte6qA5p1MQtMXre6MT`
-- ETH (ERC20): `0xdbc7a7dafbb333773a5866ccf7a74da15ee654cc`
-- LTC: `Ldb6SDxUMEdYQQfRhSA3zi4dCUtfUdsPou`
+This project is licensed under the MIT License.
 
 ---
 
 ![oh my zsh](https://i.imgur.com/XQruyEK.jpeg "oh my zsh")
 
-## Contributing
+## Donation
 
-Your contributions are always welcome! Feel free to open an issue or submit a pull request.
+Support this project:
 
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
+- USDt (TRC20): `TGCVbSSJbwL5nyXqMuKY839LJ5q5ygn2uS`
+- BTC: `13GS1ixn2uQAmFQkte6qA5p1MQtMXre6MT`
+- ETH (ERC20): `0xdbc7a7dafbb333773a5866ccf7a74da15ee654cc`
+- LTC: `Ldb6SDxUMEdYQQfRhSA3zi4dCUtfUdsPou`
