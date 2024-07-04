@@ -6,6 +6,7 @@ BACKUP_DIR="${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/shortcuts/backups"
 PROFILE_DIR="${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/shortcuts/profiles"
 LOG_FILE="${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/shortcuts/log.txt"
 LAST_ACTION_FILE="${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/shortcuts/last_action.zsh"
+LINKS_FILE="${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/shortcuts/links.txt"
 
 # Ensure the necessary directories and files exist
 [[ ! -f "$SHORTCUTS_FILE" ]] && touch "$SHORTCUTS_FILE"
@@ -13,6 +14,8 @@ LAST_ACTION_FILE="${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/shortcuts/last_
 [[ ! -d "$PROFILE_DIR" ]] && mkdir -p "$PROFILE_DIR"
 [[ ! -f "$LOG_FILE" ]] && touch "$LOG_FILE"
 [[ ! -f "$LAST_ACTION_FILE" ]] && touch "$LAST_ACTION_FILE"
+[[ ! -f "$LINKS_FILE" ]] && touch "$LINKS_FILE"
+[[ ! -f "$PROFILE_DIR/default.zsh" ]] && touch "$PROFILE_DIR/default.zsh" && echo "alias default='echo Default profile'" > "$PROFILE_DIR/default.zsh"
 
 # Function to log actions
 log_action() {
@@ -29,7 +32,7 @@ function source_shortcuts_file() {
 function display_help() {
     cat << EOF
 Usage: shortcuts [OPTION] [ARGS...]
-Manage command shortcuts with features including backup, restore, grouping, profiles, undo, search, toggle, import/export, and logging.
+Manage command shortcuts with features including backup, restore, grouping, profiles, undo, search, toggle, import/export, logging, link management, and profile initialization.
 
 Options:
   -h                Display help
@@ -49,6 +52,9 @@ Options:
   -lp               List all profiles
   -dp <profile>     Delete a specific profile
   -source           Source the shortcuts file
+  -la <link>        Add a link to import shortcuts from
+  -rl <link>        Remove a link
+  -ra               Remove all shortcuts
 
 Examples:
   shortcuts -a g:ls 'ls -la'       Add a new shortcut 'ls' in group 'g'
@@ -67,6 +73,9 @@ Examples:
   shortcuts -lp                    List all profiles
   shortcuts -dp work               Delete 'work' profile
   shortcuts -source                Source the shortcuts file
+  shortcuts -la http://link.com    Add a link to import shortcuts from
+  shortcuts -rl http://link.com    Remove a link
+  shortcuts -ra                    Remove all shortcuts
 EOF
 }
 
@@ -242,9 +251,10 @@ function pre_change_backup() {
 function _shortcuts_autocomplete() {
     local cur=${COMP_WORDS[COMP_CWORD]}
     local prev=${COMP_WORDS[COMP_CWORD-1]}
-    local actions="-h -a -r -l -e -b -s -g -p -u -f -t -i -x -lp -dp -source"
+    local actions="-h -a -r -l -e -b -s -g -p -u -f -t -i -x -lp -dp -source -la -rl -ra"
     local aliases=$(grep "^alias " "$SHORTCUTS_FILE" | cut -d' ' -f2 | cut -d'=' -f1)
     local profiles=$(ls "$PROFILE_DIR" | sed 's/\.zsh$//')
+    local links=$(cat "$LINKS_FILE")
 
     case "$prev" in
         -r|-e|-t)
@@ -252,6 +262,9 @@ function _shortcuts_autocomplete() {
             return 0;;
         -p|-dp)
             COMPREPLY=($(compgen -W "${profiles}" -- "$cur"))
+            return 0;;
+        -rl)
+            COMPREPLY=($(compgen -W "${links}" -- "$cur"))
             return 0;;
     esac
 
@@ -281,6 +294,39 @@ function delete_profile() {
     fi
 }
 
+# Add a link to import shortcuts from
+function add_link() {
+    local link=$1
+    if grep -q "^$link$" "$LINKS_FILE"; then
+        echo "Link '$link' already exists."
+    else
+        echo "$link" >> "$LINKS_FILE"
+        echo "Link '$link' added."
+        log_action "Link '$link' added."
+    fi
+}
+
+# Remove a link
+function remove_link() {
+    local link=$1
+    if grep -q "^$link$" "$LINKS_FILE"; then
+        sed -i "/^$link$/d" "$LINKS_FILE"
+        echo "Link '$link' removed."
+        log_action "Link '$link' removed."
+    else
+        echo "Link '$link' does not exist."
+    fi
+}
+
+# Remove all shortcuts
+function remove_all_shortcuts() {
+    pre_change_backup
+    > "$SHORTCUTS_FILE"
+    echo "All shortcuts removed."
+    log_action "All shortcuts removed."
+    source_shortcuts_file
+}
+
 # Main function to manage shortcuts
 function shortcuts() {
     case "$1" in
@@ -300,7 +346,10 @@ function shortcuts() {
         -x) shift; export_shortcuts "$@" ;;
         -lp) list_profiles ;;
         -dp) shift; delete_profile "$@" ;;
-        -source) source_shortcuts_file ;; # Added command to source the shortcuts file
+        -source) source_shortcuts_file ;;
+        -la) shift; add_link "$@" ;;
+        -rl) shift; remove_link "$@" ;;
+        -ra) remove_all_shortcuts ;;
         *) echo "Invalid option. Use -h for help." ;;
     esac
 }
