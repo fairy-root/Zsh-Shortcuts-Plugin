@@ -204,7 +204,9 @@ function toggle_shortcut() {
         source_shortcuts_file
     else
         echo "Shortcut '$alias_name' does not exist."
-        
+    fi
+}
+
 # Import and Export shortcuts
 function import_shortcuts() {
     pre_change_backup
@@ -264,7 +266,7 @@ function pre_change_backup() {
 function _shortcuts_autocomplete() {
     local cur=${COMP_WORDS[COMP_CWORD]}
     local prev=${COMP_WORDS[COMP_CWORD-1]}
-    local actions="-h -a -r -l -e -b -s -g -p -u -f -t -i -x -lp -dp -source -la -rl -ra -ap"
+    local actions="-h -a -r -l -e -b -s -g -p -u -f -t -i -x -lp -dp -source -la -rl -ra -ap -up"
     local aliases=$(grep "^alias " "$SHORTCUTS_FILE" | cut -d' ' -f2 | cut -d'=' -f1)
     local profiles=$(ls "$PROFILE_DIR" | sed 's/\.zsh$//')
     local links=$(cat "$LINKS_FILE")
@@ -323,7 +325,11 @@ function add_link() {
 function remove_link() {
     local link=$1
     if grep -q "^$link$" "$LINKS_FILE"; then
-        sed -i "/^$link$/d" "$LINKS_FILE"
+        if [[ "$OSTYPE" == "darwin"* ]]; then
+            sed -i "" "/^$link$/d" "$LINKS_FILE"
+        else
+            sed -i "/^$link$/d" "$LINKS_FILE"
+        fi
         echo "Link '$link' removed."
         log_action "Link '$link' removed."
     else
@@ -380,7 +386,7 @@ function shortcuts() {
         -rl) shift; remove_link "$@" ;;
         -ra) remove_all_shortcuts ;;
         -ap) shift; add_profile "$@" ;;
-        -up) update_shortcuts ;;  # Add the update command here
+        -up) update_shortcuts ;;
         *) echo "Invalid option. Use -h for help." ;;
     esac
 }
