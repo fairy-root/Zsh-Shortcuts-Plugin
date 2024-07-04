@@ -56,6 +56,7 @@ Options:
   -rl <link>        Remove a link
   -ra               Remove all shortcuts
   -ap <profile>     Add a new profile
+  -up               Update shortcuts from links
 
 Examples:
   shortcuts -a g:ls 'ls -la'       Add a new shortcut 'ls' in group 'g'
@@ -78,6 +79,7 @@ Examples:
   shortcuts -rl http://link.com    Remove a link
   shortcuts -ra                    Remove all shortcuts
   shortcuts -ap new_profile        Add a new profile
+  shortcuts -up                    Update shortcuts from links
 EOF
 }
 
@@ -304,6 +306,13 @@ function delete_profile() {
         rm -f "$profile_path"
         echo "Profile '$profile' deleted."
         log_action "Profile '$profile' deleted."
+        # If the deleted profile was the default, also clear the shortcuts file
+        if [[ "$profile" == "default" ]]; then
+            > "$SHORTCUTS_FILE"
+            echo "All shortcuts removed."
+            log_action "All shortcuts removed."
+            source_shortcuts_file
+        fi
     else
         echo "Profile '$profile' does not exist."
     fi
@@ -362,7 +371,7 @@ function update_shortcuts() {
 
     pre_change_backup
     while IFS= read -r link; do
-        curl -fsSL "$link" >> "$SHORTCUTS_FILE"
+        curl -fsSL "$link" | sed 's/\r$//' >> "$SHORTCUTS_FILE"
     done < "$LINKS_FILE"
     echo "Shortcuts updated from links."
     log_action "Shortcuts updated from links."
